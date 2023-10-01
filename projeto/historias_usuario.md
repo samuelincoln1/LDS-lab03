@@ -43,5 +43,4 @@
 ## Critérios de Aceitação:
 
 - A empresa deve adicionar descrição e foto do produto.
-
 - A empresa deve informar o custo em moedas da vantagem oferecida.
