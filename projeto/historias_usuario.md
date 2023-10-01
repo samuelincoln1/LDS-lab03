@@ -2,7 +2,7 @@
 
 - Como um usuário (aluno ou empresa), quero me cadastrar no sistema, para que eu possa interagir com o sistema.
 
-Critérios de Aceitação:
+## Critérios de Aceitação:
 
 - O sistema deve permitir que o usuário preencha seus dados de identificação.
 
