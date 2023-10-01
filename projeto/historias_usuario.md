@@ -1,94 +1,47 @@
-# História de Usuário 1: Cadastro de Cliente
+# História de Usuário 1: Cadastro de usuário
 
-Como um usuário individual (cliente), quero me cadastrar no sistema, para que eu possa introduzir, modificar, consultar e cancelar pedidos de aluguel.
+Como um usuário (aluno ou empresa), quero me cadastrar no sistema, para que eu possa interagir com o sistema.
 
 Critérios de Aceitação:
 
-- O sistema deve permitir que o cliente preencha seus dados de identificação (RG, cpf, Nome, Endereço).
-- O cliente deve ser capaz de fornecer informações sobre sua profissão.
-- O sistema deve permitir que o cliente informe até três entidades empregadoras e seus respectivos rendimentos auferidos.
+- O sistema deve permitir que o usuário preencha seus dados de identificação.
 
-# História de Usuário 2: Introduzir Pedido de Aluguel
+# História de Usuário 2: Consultar extrato
 
-Como um cliente cadastrado, quero ser capaz de introduzir um pedido de aluguel de um automóvel, para que eu possa alugar um veículo quando necessário.
+Como um aluno cadastrado, quero ser capaz de consultar meu extrato de moedas, para que eu possa gerenciar meu saldo.
+
+# História de Usuário 3: Selecionar vantagem
+
+Como um aluno cadastrado, quero ser capaz de selecionar a vantagem desejada, para que eu possa realizar a troca de moedas.
+
+## Critérios de Aceitação:
+- Os alunos devem ser capazes de visualizar as vantagens cadastradas no sistema.
+
+# História de Usuário 4: Trocar moedas
+
+Como um aluno cadastrado, quero ser capaz de trocar minhas moedas por vantagens, para que eu possa usufruir dos benefícios oferecidos.
 
 ## Critérios de Aceitação:
 
-- O cliente deve ser capaz de selecionar o tipo de contrato desejado (propriedade do cliente, empresa ou banco).
-- O cliente deve informar a matrícula, profissao, marca, modelo e placa do veículo desejado.
-- O sistema deve registrar o pedido de aluguel no sistema para análise financeira.
+- O sistema deve calcular e atualizar o novo saldo após a operação.
 
-# História de Usuário 3: Análise de Pedido por Agente
 
-Como um agente (empresa ou banco), quero ser capaz de analisar os pedidos de aluguel dos clientes, para que eu possa avaliar sua viabilidade financeira.
+# História de Usuário 5: Distribuir moedas
 
-## Critérios de Aceitação:
-
-- Os agentes devem ser capazes de visualizar os pedidos de aluguel pendentes.
-- O sistema deve calcular e exibir informações financeiras relevantes para a avaliação do pedido.
-- Os agentes podem aprovar ou recusar um pedido com base em critérios financeiros.
-
-# História de Usuário 4: Modificar Pedido de Aluguel
-
-Como um agente (empresa ou banco) autorizado, quero ser capaz de modificar um pedido de aluguel existente, para que eu possa ajustar os detalhes do contrato conforme necessário.
-
-## Critérios de Aceitação:
-- Os agentes devem ser capazes de pesquisar e localizar pedidos de aluguel existentes com base em informações como o número do pedido, cliente ou veículo.
-- Após localizar o pedido de aluguel desejado, os agentes devem poder realizar as seguintes ações de modificação:
-
-1. Alterar o veículo selecionado no pedido.
-2. Atualizar os termos do contrato, como duração, quilometragem permitida e taxa.
-3. Adicionar ou remover itens adicionais, como seguro adicional ou serviços extras.
-4. Modificar a data de início ou término do contrato, se necessário.
-
-# História de Usuário 5: Gestão de Pedidos e Contratos
-
-Como um administrador do sistema, quero ser capaz de gerenciar todos os pedidos e contratos, para que eu possa garantir o funcionamento adequado do sistema.
+Como um professor cadastrado, quero ser capaz de distribuir moedas para os alunos, para que eu possa recompensar os esforços dos alunos.
 
 ## Critérios de Aceitação:
 
-- O sistema deve fornecer uma interface de administração para visualizar, modificar e gerenciar todos os pedidos e contratos.
-- Os administradores devem poder realizar ações de manutenção e solucionar problemas, se necessário.
-- Estas histórias de usuário representam algumas das principais funcionalidades e interações do sistema. Elas podem ser refinadas e expandidas com mais detalhes e critérios de aceitação conforme necessário.
+- O sistema deve fornecer uma quantidade de moedas disponíveis para a distribuição.
+- O professor deve possuir saldo suficiente para realizar o envio das moedas.
+- O professor deve informar qual aluno deve receber as moedas.
 
-# História de Usuário 6: Modificar Pedido de Aluguel
+# História de Usuário 6: Cadastrar vantagem
 
-Como um cliente registrado, quero ser capaz de modificar um pedido de aluguel existente, para que eu possa ajustar os detalhes do contrato de aluguel conforme necessário.
-
-## Critérios de Aceitação:
-
-- Os clientes devem ter a capacidade de visualizar uma lista de seus pedidos de aluguel existentes.
-
-- Após selecionar um pedido de aluguel específico, os clientes devem poder realizar as seguintes ações de modificação:
-
-1. Alterar o veículo selecionado no pedido.
-2. Atualizar os termos do contrato, como duração, quilometragem permitida e taxa.
-3. Adicionar ou remover itens adicionais, como seguro adicional ou serviços extras.
-4. Modificar a data de início ou término do contrato, se necessário.
-Após as modificações, o sistema deve recalcular automaticamente qualquer informação financeira relevante, como o valor do aluguel mensal.
-
-- Os clientes devem receber uma confirmação das modificações realizadas.
-
-# História de Usuário 7: Consultar Pedido de Aluguel
-
-Como um cliente registrado, quero ser capaz de consultar os detalhes de um pedido de aluguel existente, para que eu possa revisar as informações do contrato quando necessário.
+Como uma empresa parceira cadastrada, quero ser capaz de cadastrar vantagens no sistema, para que eu possa oferecer benefícios aos alunos.
 
 ## Critérios de Aceitação:
 
-- Os clientes devem ter a capacidade de visualizar uma lista de seus pedidos de aluguel existentes.
+- A empresa deve adicionar descrição e foto do produto.
 
-- Após selecionar um pedido de aluguel específico, os clientes devem poder visualizar todos os detalhes do contrato, incluindo o veículo, os termos do contrato, itens adicionais e informações financeiras.
-
-# História de Usuário 8: Cancelar Pedido de Aluguel
-
-Como um cliente registrado, quero ser capaz de cancelar um pedido de aluguel existente, para que eu possa desistir do contrato de aluguel.
-
-## Critérios de Aceitação:
-
-- Os clientes devem ter a capacidade de visualizar uma lista de seus pedidos de aluguel existentes.
-
-- Após selecionar um pedido de aluguel específico, os clientes devem poder cancelar o pedido de aluguel.
-
-- O sistema deve solicitar uma confirmação final antes de concluir o cancelamento.
-
-- Após o cancelamento, o sistema deve gerar uma confirmação do cancelamento e encerrar o contrato de aluguel adequadamente, se aplicável.
+- A empresa deve informar o custo em moedas da vantagem oferecida.
