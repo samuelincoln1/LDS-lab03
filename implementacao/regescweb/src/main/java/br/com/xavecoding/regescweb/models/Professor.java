@@ -1,83 +1,92 @@
 package br.com.xavecoding.regescweb.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.util.Objects;
 
-import javax.persistence.*;
-import java.util.ArrayList;
+@Table(name="professor")
+@Entity(name="professor")
 
-@Entity
 public class Professor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+    @Id 
+    private int id;
     private String nome;
-    private Long saldo;
-    private String departamento;
-    private ArrayList <Transacao> transacoes = new ArrayList<>();
-    @Enumerated(EnumType.STRING)
-    private Instituicao instituicao;
+    private String instituicao;
+    private String curso;
 
-    public Professor() {  }
 
-    public Professor(String nome, Long saldo, Instituicao instituicao, String departamento) {
+    public Professor() {
+    }
+
+    public Professor(String nome, String instituicao, String curso) {
         this.nome = nome;
-        this.departamento = departamento;
-        this.saldo = saldo;
         this.instituicao = instituicao;
+        this.curso = curso;
     }
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Long getSaldo() {
-        return saldo;
+    public String getInstituicao() {
+        return this.instituicao;
     }
 
-    public void setSaldo(Long saldo) {
-        this.saldo = saldo;
-    }
-
-    public Instituicao getInstituicao() {
-        return instituicao;
-    }
-
-    public void setInstituicao(Instituicao instituicao) {
+    public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
     }
 
-    public Boolean enviarMoedas(Long qtd, Aluno aluno, String msg){
-        if (this.saldo >= qtd){
-            saldo -= qtd;
-            Transacao trans = new Transacao(TipoTransacao.ENVIAR, msg, qtd, this.nome, aluno.getNome());
-            this.transacoes.add(trans);
-            trans.setTipo(TipoTransacao.RECEBER);
-            aluno.receberMoedas(trans, qtd);
-            return true;
+    public String getCurso() {
+        return this.curso;
+    }
 
-        }
-        return false;
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public Professor id(int id) {
+        setId(id);
+        return this;
+    }
+
+    public Professor nome(String nome) {
+        setNome(nome);
+        return this;
+    }
+
+    public Professor instituicao(String instituicao) {
+        setInstituicao(instituicao);
+        return this;
+    }
+
+    public Professor curso(String curso) {
+        setCurso(curso);
+        return this;
     }
 
     @Override
     public String toString() {
-        return "Professor{" +
-               "id=" + id +
-               ", nome='" + nome + '\'' +
-               ", saldo=" + saldo +
-               ", Instituicao=" + instituicao +
-               '}';
+        return "{" +
+            " id='" + getId() + "'" +
+            ", nome='" + getNome() + "'" +
+            ", instituicao='" + getInstituicao() + "'" +
+            ", curso='" + getCurso() + "'" +
+            "}";
     }
+    
+
+
 }

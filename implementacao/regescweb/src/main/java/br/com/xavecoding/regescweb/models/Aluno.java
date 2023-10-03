@@ -1,150 +1,141 @@
 package br.com.xavecoding.regescweb.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
+@Table(name="aluno")
+@Entity(name="aluno")
 
-@Entity
 public class Aluno {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+    @Id 
+    private int id;
     private String nome;
-    private String rg;
     private String email;
+    private String rg;
+    private String endereco;
+    private String instituicao;
     private String curso;
-    private Long saldo;
-    private ArrayList <Transacao> transacoes = new ArrayList<>();
-    @Enumerated(EnumType.STRING)
-    private Instituicao instituicao;
 
-    public Aluno() {  }
 
-    public Aluno(String nome, Long saldo, Instituicao instituicao, String rg) {
+    public Aluno() {
+    }
+
+    public Aluno(String nome, String email, String rg, String endereco, String instituicao, String curso) {
+
         this.nome = nome;
-        this.saldo = saldo;
+        this.email = email;
         this.rg = rg;
+        this.endereco = endereco;
         this.instituicao = instituicao;
+        this.curso = curso;
     }
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Long getSalario() {
-        return saldo;
-    }
-
-    public void getSaldo(Long saldo) {
-        this.saldo = saldo;
-    }
-
-    public void receberMoedas(Transacao trans, Long qtd){
-        this.saldo += qtd;
-        this.transacoes.add(trans);
-    }
-
-     /**
-     * @return String return the rg
-     */
-    public String getRg() {
-        return rg;
-    }
-
-    /**
-     * @param rg the rg to set
-     */
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
-    /**
-     * @return String return the email
-     */
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
-    /**
-     * @param email the email to set
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * @return String return the curso
-     */
-    public String getCurso() {
-        return curso;
+    public String getRg() {
+        return this.rg;
     }
 
-    /**
-     * @param curso the curso to set
-     */
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getInstituicao() {
+        return this.instituicao;
+    }
+
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
+    }
+
+    public String getCurso() {
+        return this.curso;
+    }
+
     public void setCurso(String curso) {
         this.curso = curso;
     }
 
-    /**
-     * @param saldo the saldo to set
-     */
-    public void setSaldo(Long saldo) {
-        this.saldo = saldo;
+    public Aluno id(int id) {
+        setId(id);
+        return this;
     }
 
-    /**
-     * @return ArrayList <Transacao> return the transacoes
-     */
-    public ArrayList <Transacao> getTransacoes() {
-        return transacoes;
+    public Aluno nome(String nome) {
+        setNome(nome);
+        return this;
     }
 
-    /**
-     * @param transacoes the transacoes to set
-     */
-    public void setTransacoes(ArrayList <Transacao> transacoes) {
-        this.transacoes = transacoes;
+    public Aluno email(String email) {
+        setEmail(email);
+        return this;
     }
 
-    /**
-     * @return Instituicao return the instituicao
-     */
-    public Instituicao getInstituicao() {
-        return instituicao;
+    public Aluno rg(String rg) {
+        setRg(rg);
+        return this;
     }
 
-    /**
-     * @param instituicao the instituicao to set
-     */
-    public void setInstituicao(Instituicao instituicao) {
-        this.instituicao = instituicao;
+    public Aluno endereco(String endereco) {
+        setEndereco(endereco);
+        return this;
     }
 
-    
+    public Aluno instituicao(String instituicao) {
+        setInstituicao(instituicao);
+        return this;
+    }
+
+    public Aluno curso(String curso) {
+        setCurso(curso);
+        return this;
+    }
+
 
     @Override
     public String toString() {
-        return "Aluno{" +
-               "id=" + id +
-               ", nome='" + nome + '\'' +
-               ", saldo=" + saldo +
-               ", instituicao=" + instituicao +
-               '}';
+        return "{" +
+            " id='" + getId() + "'" +
+            ", nome='" + getNome() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", rg='" + getRg() + "'" +
+            ", endereco='" + getEndereco() + "'" +
+            ", instituicao='" + getInstituicao() + "'" +
+            ", curso='" + getCurso() + "'" +
+            "}";
     }
+    
+
 
 }
