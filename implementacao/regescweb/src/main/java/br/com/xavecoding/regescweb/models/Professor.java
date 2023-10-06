@@ -3,7 +3,6 @@ package br.com.xavecoding.regescweb.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 @Table(name="professor")
 @Entity(name="professor")

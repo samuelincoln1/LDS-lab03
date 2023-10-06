@@ -16,6 +16,7 @@ public class Aluno {
     private String endereco;
     private String instituicao;
     private String curso;
+    private String senha;
 
 
     public Aluno() {
@@ -120,6 +121,15 @@ public class Aluno {
     public Aluno curso(String curso) {
         setCurso(curso);
         return this;
+    }
+
+
+    public String getSenha() {
+        return this.senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 
