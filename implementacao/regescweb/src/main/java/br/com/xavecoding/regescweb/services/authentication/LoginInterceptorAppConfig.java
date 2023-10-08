@@ -17,6 +17,10 @@ public class LoginInterceptorAppConfig implements WebMvcConfigurer {
                 "/cadastro",
                 "/cadastrar",
                 "/vantangens",
+                "/cadastro-empresa",
+                "/cadastrarEmpresa",
+                "/login-empresa",
+                "/logarEmpresa",
                 "/"
             );
     }

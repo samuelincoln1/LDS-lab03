@@ -1,13 +1,8 @@
 package br.com.xavecoding.regescweb.controllers;
 
 import org.springframework.stereotype.Controller;
-
-
-
 import br.com.xavecoding.regescweb.services.CookieService;
 import jakarta.servlet.http.HttpServletRequest;
-
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 

@@ -13,6 +13,7 @@ public class Professor {
     private String nome;
     private String instituicao;
     private String curso;
+    private String senha;
 
 
     public Professor() {
@@ -75,6 +76,15 @@ public class Professor {
         setCurso(curso);
         return this;
     }
+
+    public String getSenha() {
+        return this.senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 
     @Override
     public String toString() {
