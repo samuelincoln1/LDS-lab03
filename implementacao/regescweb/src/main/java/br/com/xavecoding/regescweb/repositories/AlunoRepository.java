@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     @Query(value="SELECT * FROM aluno WHERE email = :email AND senha = :senha", nativeQuery = true)
     public Aluno Login(String email, String senha); 
+
+    @Query(value="SELECT * FROM aluno WHERE nome = :nome", nativeQuery = true)
+    public Aluno BuscaPorNome(String nome);
 }

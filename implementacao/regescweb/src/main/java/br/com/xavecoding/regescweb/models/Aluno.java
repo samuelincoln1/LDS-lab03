@@ -9,14 +9,15 @@ import jakarta.persistence.Table;
 
 public class Aluno {
     @Id 
-    private int id;
-    private String nome;
-    private String email;
-    private String rg;
-    private String endereco;
-    private String instituicao;
-    private String curso;
-    private String senha;
+    public int id;
+    public String nome;
+    public String email;
+    public String rg;
+    public String endereco;
+    public String instituicao;
+    public String curso;
+    public String senha;
+    public int saldo;
 
 
     public Aluno() {
