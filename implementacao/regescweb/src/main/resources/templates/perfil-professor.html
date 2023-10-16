@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse " id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto controle">
                     <li class="nav-item espacamentoitens">
-                        <a th:text="${nomeUsuario}" class="nav-link sublinhado"></a>
+                        <a th:text="${nomeProfessor}" class="nav-link sublinhado"></a>
                     </li>
                     <li class="nav-item espacamentoitens">
                         <a class="nav-link sublinhado" href="#">Sobre</a>
@@ -44,45 +44,24 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid" style="border: 5px;">
-        <h2>Vantagens disponíveis</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Descricao</th>
-                    <th scope="col">Custo</th>
-                    <th scope="col">Empresa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item: ${listaVantagens}">
-                    <td th:text="${item.id}"></td>
-                    <td th:text="${item.nome}"></td>
-                    <td th:text="${item.descricao}"></td>
-                    <td th:text="${item.custo}"></td>
-                    <td th:text="${item.empresaId}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
     <div class="container-fluid">
         <h2>Obter vantagem</h2>
-        <h3 th:text="'Saldo atual: ' + ${aluno.saldo}">Saldo atual: </h3>
-        <form action="/obter-vantagem" method="post">
+        <h3 th:text="'Saldo atual: ' + ${professor.saldo}">Saldo atual: </h3>
+        <form action="/distribuir-saldo" method="post">
             <div class="mb-3">
-                <label for="obter-vantagem-input" class="form-label">Id Vantagem</label>
-                <input type="text" name="idVantagem" class="form-control" id="obter-vantagem-input">
-                <div id="obter-vantagem-help" class="form-text">Digite o id da vantagem desejada.</div>
+                <label for="obter-id-input" class="form-label">Id do Aluno</label>
+                <input type="text" name="idAluno" class="form-control" id="obter-id-input">
+                <div id="obter-id-help" class="form-text">Digite o id do aluno que deseja distribuir o saldo.</div>
+                <label for="obter-saldo-input" class="form-label">Saldo</label>
+                <input type="text" name="saldo" class="form-control" id="obter-saldo-input">
+                <div id="obter-saldo-help" class="form-text">Digite o saldo.</div>
             </div>
-            <button type="submit" class="btn btn-primary">Obter</button>
+            <button type="submit" class="btn btn-primary">Distribuir</button>
         </form>
     </div>
-    <br><br><br>
+<br><br><br>
     <table class="table">
-        <h2>Transações:
-        </h2>
+        <h2>Transações</h2>
         <thead>
             <tr>
                 <th>Data</th>
@@ -90,7 +69,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="transacao : ${transacoesDoAluno}">
+            <tr th:each="transacao : ${transacoesDoProfessor}">
                 <td th:text="${#temporals.format(transacao.data, 'dd/MM/yyyy HH:mm:ss')}"></td>
                 <td th:text="${transacao.valor}"></td>
             </tr>

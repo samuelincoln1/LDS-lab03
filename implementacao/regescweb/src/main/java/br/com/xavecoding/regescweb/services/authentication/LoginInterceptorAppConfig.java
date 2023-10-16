@@ -21,6 +21,9 @@ public class LoginInterceptorAppConfig implements WebMvcConfigurer {
                 "/cadastrarEmpresa",
                 "/login-empresa",
                 "/logarEmpresa",
+                "/login-professor",
+                "/logarProfessor",
+                "/distribuir-saldo",
                 "/"
             );
     }

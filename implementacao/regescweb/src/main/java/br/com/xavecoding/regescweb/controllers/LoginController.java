@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.xavecoding.regescweb.models.Aluno;
 import br.com.xavecoding.regescweb.models.Empresa;
+import br.com.xavecoding.regescweb.models.Professor;
 import br.com.xavecoding.regescweb.repositories.AlunoRepository;
 import br.com.xavecoding.regescweb.repositories.EmpresaRepository;
+import br.com.xavecoding.regescweb.repositories.ProfessorRepository;
 import br.com.xavecoding.regescweb.services.CookieService;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -22,6 +24,9 @@ public class LoginController {
     @Autowired
     private EmpresaRepository repEmp;
 
+    @Autowired
+    private ProfessorRepository repProf;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -30,6 +35,11 @@ public class LoginController {
     @GetMapping("/login-empresa")
     public String loginEmpresa() {
         return "login-empresa";
+    } 
+
+     @GetMapping("/login-professor")
+    public String loginProfessor() {
+        return "login-professor";
     } 
 
     @PostMapping("/logar")
@@ -65,5 +75,24 @@ public class LoginController {
         System.out.println("Login deu errado");
         
         return "login-empresa";
+    }
+
+    
+    @PostMapping("/logarProfessor")
+    public String logarProfessor(Model model, Professor professorParam, String lembrar, HttpServletResponse response) {
+        Professor professor = this.repProf.Login(professorParam.getNome(), professorParam.getSenha());
+        if (professor != null) {
+            int tempoLogado = 60*60;
+            if (lembrar != null) tempoLogado = (60*60*24*365); // se lembrar senha, dura 1 ano
+            CookieService.setCookie(response, "id", String.valueOf(professor.getId()), tempoLogado);
+            CookieService.setCookie(response, "nomeProfessor", professor.getNome(), tempoLogado);
+            System.out.println("Fez login");
+            return "redirect:/perfil-professor";
+        }
+
+        model.addAttribute("erro", "Usuário ou senha inválidos");
+        System.out.println("Login deu errado");
+        
+        return "login-professor";
     }
 }

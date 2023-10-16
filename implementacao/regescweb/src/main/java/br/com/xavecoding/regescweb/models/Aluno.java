@@ -133,6 +133,14 @@ public class Aluno {
         this.senha = senha;
     }
 
+    public int getSaldo() {
+        return this.saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
 
     @Override
     public String toString() {

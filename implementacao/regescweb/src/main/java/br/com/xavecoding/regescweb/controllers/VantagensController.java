@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 
 import br.com.xavecoding.regescweb.models.Aluno;
 import br.com.xavecoding.regescweb.models.AlunoPossuiVantagem;
+import br.com.xavecoding.regescweb.models.Transacao;
 import br.com.xavecoding.regescweb.models.Vantagem;
 import br.com.xavecoding.regescweb.repositories.AlunoPossuiVantagemRepository;
 import br.com.xavecoding.regescweb.repositories.AlunoRepository;
+import br.com.xavecoding.regescweb.repositories.TransacaoRepository;
 import br.com.xavecoding.regescweb.repositories.VantagensRepository;
 import br.com.xavecoding.regescweb.services.CookieService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,16 +29,22 @@ public class VantagensController {
     public VantagensRepository vantagensRepository;
     @Autowired AlunoRepository alunoRepository;
 
+    @Autowired
+    private TransacaoRepository transacaoRepository;
+
     @GetMapping("/vantagens")
     public String vantagens(Model model,HttpServletRequest request) {
         String nomeUsuario = CookieService.getCookie(request, "nomeUsuario");
         List<Vantagem> vantagens = vantagensRepository.findAll();
         Aluno aluno = alunoRepository.BuscaPorNome(nomeUsuario);
+        List<Transacao> transacoesDoAluno = transacaoRepository.findByAluno(aluno);
+
         if (nomeUsuario != null) {
             model.addAttribute("logado", true);
             model.addAttribute("nomeUsuario", nomeUsuario);
             model.addAttribute("listaVantagens", vantagens);
             model.addAttribute("aluno", aluno);
+            model.addAttribute("transacoesDoAluno", transacoesDoAluno);
             return "vantagens";
         }
         return "redirect:/login";
