@@ -1,12 +1,9 @@
 package br.com.xavecoding.regescweb.models;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,11 +15,14 @@ public class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "data_registro")
     private LocalDateTime data;
 
     private int valor;
+
+    @Column(name = "motivo")
+    private String motivo;
 
     @ManyToOne
     @JoinColumn(name = "professor_id")
@@ -48,6 +48,15 @@ public class Transacao {
         return this.data = date;
     }
 
+    public String getMotivo(){
+        return motivo;
+    }
+
+      public void setMotivo(String motivo) {
+       this.motivo = motivo;
+    }
+
+
     public int getValor() {
         return valor;
     }
@@ -72,6 +81,7 @@ public class Transacao {
         this.aluno = aluno;
     }
 
+  
  
     
 }

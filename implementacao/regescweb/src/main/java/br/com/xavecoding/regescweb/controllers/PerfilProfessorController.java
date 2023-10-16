@@ -45,7 +45,7 @@ public class PerfilProfessorController {
     }
 
     @PostMapping("/distribuir-saldo")
-    public String distribuirSaldo(Model model, HttpServletRequest request, @RequestParam("idAluno") Long idAluno, @RequestParam("saldo") int saldo){
+    public String distribuirSaldo(Model model, HttpServletRequest request, @RequestParam("idAluno") Long idAluno, @RequestParam("saldo") int saldo, @RequestParam("motivo") String motivo) {
         String nomeProfessor = CookieService.getCookie(request, "nomeProfessor");
         Professor professor = professorRepository.BuscaPorNome(nomeProfessor);
         Aluno aluno = alunoRepository.findById(idAluno).get();
@@ -57,6 +57,8 @@ public class PerfilProfessorController {
                 transacao.setData(LocalDateTime.now());
                 transacao.setValor(saldo);
                 transacao.setProfessor(professor);
+                transacao.setMotivo(motivo);
+                transacao.setAluno(aluno);
                 transacaoRepository.save(transacao);
 
             professorRepository.save(professor);
