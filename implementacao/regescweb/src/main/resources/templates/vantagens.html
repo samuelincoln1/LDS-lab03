@@ -85,12 +85,14 @@
             <tr>
                 <th>Data</th>
                 <th>Valor</th>
+                <th>Motivo</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="transacao : ${transacoesDoAluno}">
                 <td th:text="${#temporals.format(transacao.data, 'dd/MM/yyyy HH:mm:ss')}"></td>
                 <td th:text="${transacao.valor}"></td>
+                <td th:text="${transacao.motivo}"></td>
             </tr>
         </tbody>
     </table>
