@@ -68,7 +68,7 @@ public class LoginController {
             CookieService.setCookie(response, "id", String.valueOf(empresa.getId()), tempoLogado);
             CookieService.setCookie(response, "nomeEmpresa", empresa.getNome(), tempoLogado);
             System.out.println("Fez login");
-            return "redirect:/perfil-empresa";
+            return "redirect:/cadastrar-vantagem";
         }
 
         model.addAttribute("erro", "Usuário ou senha inválidos");

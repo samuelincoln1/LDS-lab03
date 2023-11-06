@@ -17,6 +17,7 @@ import br.com.xavecoding.regescweb.services.CookieService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -61,6 +62,19 @@ public class VantagensController {
             alunoRepository.save(aluno);
         }
         return "redirect:/vantagens";
+    }
+
+    @GetMapping("/cadastrar-vantagem")
+    public String cadastroVantagem(Model model, HttpServletRequest request){
+        model.addAttribute("vantagem", new Vantagem());
+        return "cadastro-vantagem";
+    }
+
+    @PostMapping("/cadastrar-vantagem")
+    public String cadastrarVantagem(Model model, @ModelAttribute Vantagem vantagem, HttpServletRequest request){
+        vantagem.foto="temp";
+        vantagensRepository.save(vantagem);
+        return "cadastro-vantagem";
     }
     
 }
