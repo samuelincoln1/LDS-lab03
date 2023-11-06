@@ -1,63 +1,74 @@
+/* Estilos gerais */
 body {
-    background-color: white;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 .navbarcor {
-    background-color: whitesmoke;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .controle {
-    font-size: x-large;
-
-}
-
-.navbar-brand {
-    font-size: xx-large !important;
-}
-
-.espacamentoitens {
-    /* background-color: blue; */
-    padding: 0 40px 0 0;
+    margin-right: 20px;
 }
 
 .sublinhado {
-    transition: all 0.2s;
-    position: relative;
+    text-decoration: none;
+    color: #fff;
 }
 
-.sublinhado::after {
-    transition: all 0.2s;
-    opacity: 0;
-    content: '';
-    height: 3px;
-    width: 100%;
-    background-color: goldenrod;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.espacamentoitens {
+    margin-right: 15px;
 }
 
-.sublinhado:hover::after {
-    opacity: 1;
-
-
-}
-
-.active {
-    color: black;
-}
-
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-}
-
-.card-registration .select-arrow {
-    top: 13px;
+.card-registration {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cor {
-    background-color: rgb(235, 235, 235);
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Formulário de cadastro */
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    color: #000;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Estilos específicos para a seção de cadastro */
+section {
+    background: url('background-image.jpg');
+    background-size: cover;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilos para links e botões */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
 }
