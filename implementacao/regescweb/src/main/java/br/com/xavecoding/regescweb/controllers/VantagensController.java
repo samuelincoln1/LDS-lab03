@@ -14,6 +14,8 @@ import br.com.xavecoding.regescweb.repositories.AlunoRepository;
 import br.com.xavecoding.regescweb.repositories.TransacaoRepository;
 import br.com.xavecoding.regescweb.repositories.VantagensRepository;
 import br.com.xavecoding.regescweb.services.CookieService;
+import br.com.xavecoding.regescweb.services.EmailService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,9 @@ public class VantagensController {
 
     @Autowired
     private TransacaoRepository transacaoRepository;
+
+    
+    @Autowired EmailService emailService;
 
     @GetMapping("/vantagens")
     public String vantagens(Model model,HttpServletRequest request) {
@@ -52,7 +57,7 @@ public class VantagensController {
     }
 
     @PostMapping("/obter-vantagem")
-    public String obterVantagem(Model model, HttpServletRequest request, @RequestParam("idVantagem") int idVantagem){
+    public String obterVantagem(Model model, HttpServletRequest request, @RequestParam("idVantagem") int idVantagem) throws MessagingException{
         String nomeUsuario = CookieService.getCookie(request, "nomeUsuario");
         Aluno aluno = alunoRepository.BuscaPorNome(nomeUsuario);
         Vantagem vantagem = vantagensRepository.ListarVantagemPorId(idVantagem);
@@ -60,6 +65,7 @@ public class VantagensController {
             alunoPossuiVantagemRepository.save(new AlunoPossuiVantagem(aluno.id, vantagem.id));
             aluno.saldo = aluno.saldo - vantagem.custo;
             alunoRepository.save(aluno);
+            emailService.enviarEmailCupom(aluno.getEmail(), vantagem.getDescricao());
         }
         return "redirect:/vantagens";
     }

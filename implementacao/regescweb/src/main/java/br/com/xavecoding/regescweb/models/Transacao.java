@@ -32,6 +32,7 @@ public class Transacao {
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
+
     public Long getId() {
         return id;
     }

@@ -18,6 +18,8 @@ import br.com.xavecoding.regescweb.repositories.AlunoRepository;
 import br.com.xavecoding.regescweb.repositories.ProfessorRepository;
 import br.com.xavecoding.regescweb.repositories.TransacaoRepository;
 import br.com.xavecoding.regescweb.services.CookieService;
+import br.com.xavecoding.regescweb.services.EmailService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
@@ -29,6 +31,8 @@ public class PerfilProfessorController {
     @Autowired AlunoRepository alunoRepository;
 
     @Autowired TransacaoRepository transacaoRepository;
+
+    @Autowired EmailService emailService;
 
     @GetMapping("/perfil-professor")
     public String perfil(Model model,HttpServletRequest request) {
@@ -45,7 +49,7 @@ public class PerfilProfessorController {
     }
 
     @PostMapping("/distribuir-saldo")
-    public String distribuirSaldo(Model model, HttpServletRequest request, @RequestParam("idAluno") Long idAluno, @RequestParam("saldo") int saldo, @RequestParam("motivo") String motivo) {
+    public String distribuirSaldo(Model model, HttpServletRequest request, @RequestParam("idAluno") Long idAluno, @RequestParam("saldo") int saldo, @RequestParam("motivo") String motivo) throws MessagingException {
         String nomeProfessor = CookieService.getCookie(request, "nomeProfessor");
         Professor professor = professorRepository.BuscaPorNome(nomeProfessor);
         Aluno aluno = alunoRepository.findById(idAluno).get();
@@ -60,7 +64,7 @@ public class PerfilProfessorController {
                 transacao.setMotivo(motivo);
                 transacao.setAluno(aluno);
                 transacaoRepository.save(transacao);
-
+                emailService.enviarEmail(aluno.getEmail(), saldo);
             professorRepository.save(professor);
             alunoRepository.save(aluno);
         }

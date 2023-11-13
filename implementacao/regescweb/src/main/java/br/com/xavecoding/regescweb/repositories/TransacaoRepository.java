@@ -14,5 +14,6 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
     List<Transacao> findByProfessor(Professor professor);
 
     List<Transacao> findByAluno(Aluno aluno);
+
 }
 
