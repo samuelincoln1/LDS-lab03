@@ -14,6 +14,7 @@ public class Professor {
     private String instituicao;
     private String curso;
     private String senha;
+    private String email;
     public int saldo;
 
 
@@ -56,6 +57,10 @@ public class Professor {
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public String getEmail(){
+        return this.email;
     }
 
     public int getSaldo() {

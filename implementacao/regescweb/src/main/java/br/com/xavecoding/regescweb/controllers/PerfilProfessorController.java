@@ -65,6 +65,7 @@ public class PerfilProfessorController {
                 transacao.setAluno(aluno);
                 transacaoRepository.save(transacao);
                 emailService.enviarEmail(aluno.getEmail(), saldo);
+                emailService.enviarEmailProfessor(professor.getEmail(), saldo, aluno.nome);
             professorRepository.save(professor);
             alunoRepository.save(aluno);
         }
