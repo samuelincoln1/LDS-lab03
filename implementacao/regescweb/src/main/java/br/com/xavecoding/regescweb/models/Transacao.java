@@ -1,116 +1,88 @@
 package br.com.xavecoding.regescweb.models;
 
+import java.time.LocalDateTime;
 
-import java.util.Objects;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
+@Entity
 public class Transacao {
-    private TipoTransacao tipo;
-    private String mensagem;
-    private Long valor;
-    private String prof;
-    private String aluno;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "data_registro")
+    private LocalDateTime data;
+
+    private int valor;
+
+    @Column(name = "motivo")
+    private String motivo;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
+    @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    private Aluno aluno;
 
 
-    public Transacao(TipoTransacao tipo, String mensagem, Long valor, String prof, String aluno) {
-        this.tipo = tipo;
-        this.mensagem = mensagem;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public LocalDateTime setData(LocalDateTime date) {
+        return this.data = date;
+    }
+
+    public String getMotivo(){
+        return motivo;
+    }
+
+      public void setMotivo(String motivo) {
+       this.motivo = motivo;
+    }
+
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
         this.valor = valor;
-        this.prof = prof;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
 
-
-    public Transacao() {
-    }
-
-    public TipoTransacao getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(TipoTransacao tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getMensagem() {
-        return this.mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
-    public Long getValor() {
-        return this.valor;
-    }
-
-    public void setValor(Long valor) {
-        this.valor = valor;
-    }
-
-    public String getProf() {
-        return this.prof;
-    }
-
-    public void setProf(String prof) {
-        this.prof = prof;
-    }
-
-    public String getAluno() {
-        return this.aluno;
-    }
-
-    public void setAluno(String aluno) {
-        this.aluno = aluno;
-    }
-
-    public Transacao tipo(TipoTransacao tipo) {
-        setTipo(tipo);
-        return this;
-    }
-
-    public Transacao mensagem(String mensagem) {
-        setMensagem(mensagem);
-        return this;
-    }
-
-    public Transacao valor(Long valor) {
-        setValor(valor);
-        return this;
-    }
-
-    public Transacao prof(String prof) {
-        setProf(prof);
-        return this;
-    }
-
-    public Transacao aluno(String aluno) {
-        setAluno(aluno);
-        return this;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(tipo, mensagem, valor, prof, aluno);
-    }
-
-    @Override
-    public String toString() {
-        if (this.tipo == TipoTransacao.ENVIAR){
-           return "{" +
-            " tipo='" + getTipo() + "'" +
-            ", mensagem='" + getMensagem() + "'" +
-            ", valor='" + getValor() + "'" +
-            ", de prof='" + getProf() + "'" +
-            ", para aluno='" + getAluno() + "'" +
-            "}"; 
-        }
-        return "{" +
-            " tipo='" + getTipo() + "'" +
-            ", mensagem='" + getMensagem() + "'" +
-            ", valor='" + getValor() + "'" +
-            ", de prof='" + getProf() + "'" +
-            ", para aluno='" + getAluno() + "'" +
-            "}";
-    }
+  
+ 
     
 }
