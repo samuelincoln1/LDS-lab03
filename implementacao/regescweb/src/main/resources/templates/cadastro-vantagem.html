@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-xxl navbarcor font">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="padding-left: 20px;">Logo</a>
+            <a class="navbar-brand" href="login" style="padding-left: 20px;">Easy Coin</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,26 +60,30 @@
                                     <form method="POST" th:action="@{/cadastrar-vantagem}" th:object="${vantagem}">
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
-                                                <div class="form-outline">
-                                                    <input name="nome" type="text" id="nomeVantagemField" th:field="*{nome}"
-                                                        class="form-control form-control-lg" required />
+                                                <div class="form-outline mb-4">
+                                                    <input name="nome" type="text" id="nomeVantagemField"
+                                                        th:field="*{nome}" class="form-control form-control-lg"
+                                                        required />
                                                     <label class="form-label" for="nomeVantagemField">Nome</label>
                                                 </div>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="text" name="descricao" id="descricaoVantagemField" th:field="*{descricao}"
-                                                    class="form-control form-control-lg" required />
+                                                <input type="text" name="descricao" id="descricaoVantagemField"
+                                                    th:field="*{descricao}" class="form-control form-control-lg"
+                                                    required />
                                                 <label class="form-label" for="descricaoVantagemField">Descricao</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="text" name="custo" id="custoVantagemField" th:field="*{custo}"
-                                                    class="form-control form-control-lg" required />
+                                                <input type="text" name="custo" id="custoVantagemField"
+                                                    th:field="*{custo}" class="form-control form-control-lg" required />
                                                 <label class="form-label" for="custoVantagemField">Custo</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="text" name="empresaId" id="empresaIdVantagemField" th:field="*{empresaId}"
-                                                    class="form-control form-control-lg" required />
-                                                <label class="form-label" for="empresaIdVantagemField">Id Empresa</label>
+                                                <input type="text" name="empresaId" id="empresaIdVantagemField"
+                                                    th:field="*{empresaId}" class="form-control form-control-lg"
+                                                    required />
+                                                <label class="form-label" for="empresaIdVantagemField">Id
+                                                    Empresa</label>
                                             </div>
                                             <div class="d-flex justify-content-end pt-3">
                                                 <button type="submit"
